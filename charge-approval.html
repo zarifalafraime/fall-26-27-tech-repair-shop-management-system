@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <h1>Technician - Charge Approval</h1>
+  <nav>
+    <a href="assigned-repairs.html">Assigned Repairs</a> |
+    <a href="repair-records.html">Repair Records</a> |
+    <a href="charge-approval.html">Charge Approval</a>
+  </nav>
+  <hr>
+  <h2>Request Additional Repair Approval</h2>
+  <form>
+    <label for="request-id">Request ID:</label><br>
+    <input type="text" id="request-id" name="request_id"><br><br>
+
+    <label for="additional-work">Additional Work:</label><br>
+    <textarea id="additional-work" name="additional_work" rows="4" cols="40"></textarea><br><br>
+
+    <label for="cost">Cost:</label><br>
+    <input type="text" id="cost" name="cost"><br><br>
+
+    <input type="submit" value="Submit Request">
+  </form>
+  <h2>Approval Requests</h2>
+  <table border="1">
+    <tr>
+      <th>Request ID</th>
+      <th>Additional Work</th>
+      <th>Cost</th>
+      <th>Status</th>
+    </tr>
+  </table>
+</body>
+
+</html>
