@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <h1>Customer - Submit Repair Request</h1>
+  <nav>
+    <a href="submit-repair-request.html"><button type="button">Submit Repair Request</button></a>
+    <a href="repair-history.html"><button type="button">Repair History</button></a>
+    <a href="notifications.html"><button type="button">Notifications</button></a>
+  </nav>
+  <h2>New Repair Request</h2>
+  <form>
+    <label for="device">Device Type:</label><br>
+    <input type="text" id="device" name="device"><br><br>
+
+    <label for="model">Model:</label><br>
+    <input type="text" id="model" name="model"><br><br>
+
+    <label for="serial">Serial Number:</label><br>
+    <input type="text" id="serial" name="serial"><br><br>
+
+    <label for="issue">Issue Description:</label><br>
+    <textarea id="issue" name="issue" rows="4" cols="40"></textarea><br><br>
+
+    <input type="submit" value="Submit Request">
+  </form>
+</body>
+</html>
