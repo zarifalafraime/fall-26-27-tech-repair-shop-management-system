@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <h1>Manager - Damaged and Returned Products</h1>
+  <nav>
+    <a href="repair-assignment.html">Repair Assignment</a> |
+    <a href="damaged-returns.html">Damaged and Returned Products</a> |
+    <a href="stock-alerts.html">Stock Alerts</a>
+  </nav>
+  <hr>
+  <h2>Record Product Issue</h2>
+  <form>
+    <label for="product">Product:</label><br>
+    <input type="text" id="product" name="product"><br><br>
+
+    <label for="type">Type:</label><br>
+    <select id="type" name="type">
+      <option value="Damaged">Damaged</option>
+      <option value="Returned">Returned</option>
+    </select><br><br>
+
+    <label for="quantity">Quantity:</label><br>
+    <input type="number" id="quantity" name="quantity"><br><br>
+
+    <label for="reason">Reason:</label><br>
+    <textarea id="reason" name="reason"></textarea><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Existing Records</h2>
+  <table border="1">
+    <tr>
+      <th>Product</th>
+      <th>Type</th>
+      <th>Quantity</th>
+      <th>Reason</th>
+    </tr>
+  </table>
+</body>
+</html>
