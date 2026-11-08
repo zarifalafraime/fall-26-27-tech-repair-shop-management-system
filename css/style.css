@@ -1,0 +1,897 @@
+/* =====================================================================
+   TechCare Online Repair Shop  -  style.css
+   ---------------------------------------------------------------------
+   ONE external style sheet, linked from the <head> of every page
+   (Lecture 02: "Inserting CSS - External CSS is recommended").
+   This file contains only CSS, no HTML tags.
+
+   Sections in this file:
+     1. Reset and page defaults       6. Tables
+     2. Header and navigation bar     7. Badges and messages
+     3. Layout (container, cards)     8. Dashboard widgets
+     4. Forms                         9. Sign In and Sign Up pages
+     5. Buttons                      10. Footer
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   1. RESET AND PAGE DEFAULTS
+   Universal selector reset (Lecture 02: "* { margin: 0; }")
+   box-sizing: border-box makes width include padding and border
+   --------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;  /* ends with a generic family */
+  font-size: 16px;
+  line-height: 1.6;
+  color: #2D2D2D;
+  background-color: #F0F4F8;
+}
+
+h1, h2, h3 {
+  line-height: 1.3;
+  color: #0D1B2A;
+}
+
+a {
+  color: #0A6EBD;
+}
+
+a:hover {
+  color: #3FA3E8;
+}
+
+
+/* ---------------------------------------------------------------------
+   2. HEADER AND NAVIGATION BAR
+   Classic website layout: header, navigation, content, footer
+   --------------------------------------------------------------------- */
+.header {
+  background-color: #0D1B2A;
+  color: white;
+  padding: 14px 24px;
+  display: flex;                  /* Flexbox: logo left, user info right */
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: #3FA3E8;                 /* "Care" in accent blue */
+}
+
+.logo:hover {
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+}
+
+/* The navigation bar sticks to the top while scrolling
+   (Lecture 02: position: sticky, Exercise 2: Navigation bar) */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;                    /* stays above the page content */
+  background-color: #1A2F45;
+  padding: 0 16px;
+  overflow-x: auto;               /* scroll sideways on small screens */
+  white-space: nowrap;
+}
+
+.topnav a,
+.topnav button {
+  display: inline-block;          /* side by side, but padding works */
+  color: #E8EDF2;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 14px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: background-color 0.3s;
+}
+
+.topnav a:hover,
+.topnav button:hover {
+  background-color: #24415E;
+  color: white;
+}
+
+/* The current section gets the "active" class from JavaScript */
+.topnav a.active,
+.topnav button.active {
+  border-bottom: 3px solid #3FA3E8;
+  background-color: #24415E;
+  color: white;
+}
+
+/* Plain <nav> used in admin pages (user-management, analytics, activity-logs) */
+nav {
+  background-color: #1A2F45;
+  padding: 0 16px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+nav a {
+  display: inline-block;
+  color: #E8EDF2;
+  font-size: 0.95rem;
+  padding: 13px 16px;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: #24415E;
+  color: white;
+  text-decoration: none;
+}
+
+/* Hide the plain <hr> separators that follow the nav */
+hr {
+  border: none;
+  border-top: 1px solid #D6E0EA;
+  margin: 0 0 20px 0;
+}
+
+
+/* ---------------------------------------------------------------------
+   3. LAYOUT: CONTAINER, SECTIONS AND CARDS
+   max-width + margin: 0 auto keeps the page centred on any screen
+   --------------------------------------------------------------------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  min-height: 75vh;               /* keeps the footer near the bottom on short pages */
+}
+
+/* Every page section is hidden until showSection() displays it */
+.page-section {
+  display: none;
+}
+
+.page-title {
+  margin-bottom: 4px;
+  font-size: 1.6rem;
+}
+
+.page-subtitle {
+  color: #5A6E80;
+  margin-bottom: 20px;
+}
+
+/* A white box with rounded corners and a soft shadow (Exercise 1: Profile card) */
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #E2EAF2;
+}
+
+/* Two columns side by side; they wrap onto new lines on small screens */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.col {
+  flex: 1;
+  min-width: 300px;
+}
+
+.col-wide {
+  flex: 2;
+  min-width: 300px;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #7A8D9E;
+}
+
+/* Wrapper for page body content when no .container is used */
+body > h1,
+body > h2,
+body > h3,
+body > h4,
+body > p,
+body > ul,
+body > form,
+body > table {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+body > h1 {
+  background-color: #0D1B2A;
+  color: white;
+  padding: 18px 24px;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  max-width: 100%;
+  margin-bottom: 0;
+}
+
+body > h2 {
+  margin-top: 24px;
+  margin-bottom: 8px;
+  color: #0D1B2A;
+}
+
+body > h3 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: #1A2F45;
+}
+
+
+/* ---------------------------------------------------------------------
+   4. FORMS
+   <fieldset>, <legend> and a <table> to line up labels and fields
+   (Lecture 01: worked example - the patient registration form)
+   --------------------------------------------------------------------- */
+fieldset {
+  border: 1px solid #BDD0E0;
+  border-radius: 8px;
+  padding: 12px 16px 16px 16px;
+  margin-bottom: 16px;
+}
+
+legend {
+  font-weight: bold;
+  color: #0A6EBD;
+  padding: 0 8px;
+}
+
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-table td {
+  padding: 6px 4px;
+  vertical-align: top;
+}
+
+.form-table td:first-child {
+  width: 35%;
+  padding-top: 12px;
+}
+
+label {
+  font-weight: 600;
+  color: #3A4D5C;
+}
+
+/* The labels next to radio buttons and checkboxes are normal weight */
+.option-label {
+  font-weight: normal;
+  margin-right: 12px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #B0C4D4;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background-color: white;
+}
+
+/* :focus keeps the selected field clearly visible for keyboard users */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #0A6EBD;
+  border-color: #0A6EBD;
+}
+
+textarea {
+  resize: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 4px;
+  accent-color: #0A6EBD;
+}
+
+/* Red error text shown next to a field by JavaScript validation */
+.error {
+  display: block;
+  color: #C0392B;
+  font-size: 0.85rem;
+  min-height: 1em;
+}
+
+.form-buttons {
+  margin-top: 8px;
+}
+
+/* Inline form labels for plain pages (without .form-table) */
+form label {
+  display: inline-block;
+  min-width: 140px;
+  font-weight: 600;
+  color: #3A4D5C;
+  margin-bottom: 4px;
+}
+
+form br + label {
+  margin-top: 4px;
+}
+
+
+/* ---------------------------------------------------------------------
+   5. BUTTONS
+   :hover with a transition (Lecture 02: Hover effects and transitions)
+   --------------------------------------------------------------------- */
+.btn,
+button[type="submit"],
+input[type="submit"],
+button[type="button"] {
+  display: inline-block;
+  background-color: #0A6EBD;
+  color: white;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  margin-top: 4px;
+}
+
+.btn:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover,
+button[type="button"]:hover {
+  background-color: #3FA3E8;
+  color: white;
+}
+
+.btn:focus,
+button:focus,
+input[type="submit"]:focus {
+  outline: 3px solid orange;
+}
+
+.btn:disabled,
+button:disabled {
+  background-color: #AABBCC;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: #5A6E80;
+}
+
+.btn-secondary:hover {
+  background-color: #7A8D9E;
+}
+
+.btn-success {
+  background-color: #1E7E5A;
+}
+
+.btn-success:hover {
+  background-color: #27AE7A;
+}
+
+.btn-danger {
+  background-color: #C0392B;
+}
+
+.btn-danger:hover {
+  background-color: #E74C3C;
+}
+
+.btn-light {
+  background-color: white;
+  color: #0D1B2A;
+}
+
+.btn-light:hover {
+  background-color: #E2EAF2;
+  color: #0D1B2A;
+}
+
+.btn-small {
+  padding: 4px 12px;
+  font-size: 0.85rem;
+}
+
+
+/* ---------------------------------------------------------------------
+   6. TABLES
+   <table>, <thead>, <tbody>, <th>, <td> for tabular data
+   --------------------------------------------------------------------- */
+.table-wrapper {
+  overflow-x: auto;              /* wide tables scroll inside the card */
+}
+
+/* Style both .data-table and plain <table border="1"> used in the HTML files */
+.data-table,
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin-bottom: 20px;
+}
+
+.data-table th,
+table th {
+  background-color: #0A6EBD;
+  color: white;
+  text-align: left;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.data-table td,
+table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid #E2EAF2;
+}
+
+/* Ids and action buttons never break onto two lines */
+.data-table td:first-child,
+.data-table td:last-child,
+table td:first-child,
+table td:last-child {
+  white-space: nowrap;
+}
+
+/* Striped rows with a pseudo-class */
+.data-table tbody tr:nth-child(even),
+table tbody tr:nth-child(even),
+table tr:nth-child(even) {
+  background-color: #F5F9FC;
+}
+
+.data-table tbody tr:hover,
+table tbody tr:hover {
+  background-color: #E2EFF9;
+}
+
+.data-table td .btn {
+  margin: 2px;
+}
+
+.empty-row {
+  text-align: center;
+  color: #7A8D9E;
+  padding: 20px;
+}
+
+/* The search box and filters above a table */
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.search-bar input {
+  flex: 2;
+  min-width: 200px;
+}
+
+.search-bar select {
+  flex: 1;
+  min-width: 150px;
+}
+
+.result-count {
+  font-size: 0.85rem;
+  color: #5A6E80;
+  margin-bottom: 8px;
+}
+
+
+/* ---------------------------------------------------------------------
+   7. BADGES AND MESSAGES
+   --------------------------------------------------------------------- */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: bold;
+  color: white;
+  background-color: #5A6E80;
+  white-space: nowrap;
+}
+
+/* Role badges for tech repair staff */
+.badge.admin       { background-color: #C0392B; }
+.badge.manager     { background-color: #0A6EBD; }
+.badge.technician  { background-color: #1E7E5A; }
+.badge.customer    { background-color: #D97706; }
+
+.badge.green  { background-color: #1E7E5A; }
+.badge.orange { background-color: #D97706; }
+.badge.red    { background-color: #C0392B; }
+.badge.blue   { background-color: #0A6EBD; }
+.badge.grey   { background-color: #5A6E80; }
+
+/* A message box; hidden until JavaScript shows it */
+.message {
+  display: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  border-left: 5px solid;
+}
+
+.message.success {
+  background-color: #E8F8F2;
+  border-color: #1E7E5A;
+  color: #145240;
+}
+
+.message.error {
+  background-color: #FDECEA;
+  border-color: #C0392B;
+  color: #922B21;
+}
+
+.message.info {
+  background-color: #E8F4FD;
+  border-color: #0A6EBD;
+  color: #0A4A80;
+}
+
+
+/* ---------------------------------------------------------------------
+   8. DASHBOARD WIDGETS
+   --------------------------------------------------------------------- */
+
+/* Statistic tiles laid out with CSS Grid (Lecture 02: Looking ahead) */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-left: 6px solid #0A6EBD;
+  transition: transform 0.3s;
+}
+
+.stat-card:hover {
+  transform: scale(1.03);
+}
+
+.stat-card .stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0D1B2A;
+}
+
+.stat-card .stat-label {
+  color: #5A6E80;
+  font-size: 0.9rem;
+}
+
+/* Horizontal bar chart: JavaScript sets each bar's width with style.width */
+.bar-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.bar-label {
+  width: 140px;
+  font-size: 0.9rem;
+}
+
+.bar-track {
+  flex: 1;
+  background-color: #E2EAF2;
+  border-radius: 6px;
+  height: 22px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 0;
+  background-color: #0A6EBD;
+  border-radius: 6px;
+  transition: width 0.6s;
+}
+
+.bar-value {
+  width: 50px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Progress bar for repair completion goals */
+.progress-track {
+  background-color: #E2EAF2;
+  border-radius: 12px;
+  height: 28px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background-color: #1E7E5A;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-align: center;
+  line-height: 28px;
+  transition: width 0.6s;
+}
+
+/* Activity / notice board: fixed height with a scrollbar
+   (Lecture 02: Exercise 4 - overflow-y: auto, coloured border-left) */
+.notice-board {
+  height: 380px;
+  overflow-y: auto;
+  border: 1px solid #E2EAF2;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #F8FAFC;
+}
+
+.log-item {
+  background-color: white;
+  border-left: 5px solid #0A6EBD;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.log-item .log-time {
+  font-size: 0.8rem;
+  color: #7A8D9E;
+}
+
+/* A result box used by calculators or status checkers */
+.result-box {
+  background-color: #EBF5FD;
+  border: 2px dashed #3FA3E8;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.result-box .big {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #0A6EBD;
+}
+
+/* Repair status reminder cards */
+.reminder {
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border-left: 8px solid #1E7E5A;
+  background-color: #EAF7F2;
+}
+
+.reminder h4 {
+  margin-bottom: 2px;
+}
+
+/* Analytics list items (plain <ul> in analytics.html) */
+body > ul {
+  list-style: none;
+  padding: 20px 24px;
+  max-width: 600px;
+}
+
+body > ul li {
+  background-color: white;
+  border-left: 6px solid #0A6EBD;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  font-size: 1rem;
+  color: #0D1B2A;
+  transition: transform 0.2s;
+}
+
+body > ul li:hover {
+  transform: translateX(4px);
+}
+
+
+/* ---------------------------------------------------------------------
+   9. SIGN IN AND SIGN UP PAGES
+   --------------------------------------------------------------------- */
+
+/* The login and register boxes: centred, never wider than the screen */
+.auth-box {
+  max-width: 480px;
+  margin: 40px auto;
+}
+
+.auth-box.wide {
+  max-width: 720px;
+}
+
+/* Standalone sign-in / sign-up page wrapper — targets plain <form>
+   elements that sit directly inside <body> (signin.html, signup.html) */
+body > form {
+  max-width: 460px;
+  margin: 32px auto;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 32px 36px;
+  border-top: 6px solid #0A6EBD;
+}
+
+body > form label {
+  display: block;
+  font-weight: 600;
+  color: #3A4D5C;
+  margin-bottom: 4px;
+}
+
+body > form input[type="text"],
+body > form input[type="email"],
+body > form input[type="password"] {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+body > form input[type="submit"] {
+  width: 100%;
+  padding: 11px;
+  font-size: 1rem;
+  margin-top: 8px;
+  background-color: #0A6EBD;
+}
+
+body > form input[type="submit"]:hover {
+  background-color: #3FA3E8;
+}
+
+/* The page <h1> on auth pages */
+body > h1 + form {
+  margin-top: 24px;
+}
+
+/* Switch link (e.g. "Don't have an account? Sign Up") */
+body > p {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: #5A6E80;
+  padding-bottom: 24px;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.btn-block {
+  width: 100%;
+  padding: 11px;
+  font-size: 1rem;
+}
+
+
+/* ---------------------------------------------------------------------
+   10. FOOTER
+   --------------------------------------------------------------------- */
+.footer {
+  background-color: #0D1B2A;
+  color: #A0B4C4;
+  text-align: center;
+  padding: 16px;
+  margin-top: 30px;
+  font-size: 0.88rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #C8D8E8;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+
+/* =====================================================================
+   RESPONSIVE: stack columns on small screens
+   ===================================================================== */
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body > form {
+    margin: 16px;
+    padding: 20px;
+  }
+
+  .topnav,
+  nav {
+    padding: 0 8px;
+  }
+
+  body > h1 {
+    font-size: 1.2rem;
+    padding: 14px 16px;
+  }
+}
+
