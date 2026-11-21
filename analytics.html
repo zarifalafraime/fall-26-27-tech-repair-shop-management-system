@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/data.js"></script>
+  <script defer src="js/common.js"></script>
+  <script defer src="js/analytics.js"></script>
 </head>
 <body>
   <h1>Admin - Analytics</h1>
@@ -14,12 +17,13 @@
   </nav>
   <hr>
   <h2>System Analytics</h2>
+  <p>Report from sample shop records.</p>
   <ul>
-    <li>Total users: 0</li>
-    <li>Open repair requests: 0</li>
-    <li>Completed repairs: 0</li>
-    <li>Low-stock items: 0</li>
-    <li>Recorded damaged or returned products: 0</li>
+    <li>Total users: <span id="userTotal"></span></li>
+    <li>Open repair requests: <span id="openTotal"></span></li>
+    <li>Completed repairs: <span id="completedTotal"></span></li>
+    <li>Low-stock items: <span id="stockTotal"></span></li>
+    <li>Recorded damaged or returned products: <span id="returnsTotal"></span></li>
   </ul>
 </body>
 </html>
