@@ -1,3 +1,18 @@
+/* Manager, technician and customer feature pages */
+.shop-role .header h1 { color: white; font-size: 1.5rem; }
+.shop-role nav { padding: 12px 24px; background: white; }
+.shop-role nav a { display: inline-block; margin-right: 20px; }
+.shop-role nav a[aria-current="page"] { font-weight: bold; }
+.shop-role main { overflow-x: auto; padding: 20px; }
+.shop-role form { display: grid; gap: 8px; max-width: 34rem; margin-bottom: 20px; }
+.shop-role input, .shop-role textarea, .shop-role select { padding: 8px; font: inherit; }
+.shop-role button { padding: 6px 12px; margin-right: 4px; cursor: pointer; }
+.shop-role table { width: 100%; border-collapse: collapse; background: white; }
+.shop-role th, .shop-role td { padding: 8px; border: 1px solid #cbd5df; text-align: left; }
+.shop-role tr:nth-child(even) { background: #f4f7fa; }
+.shop-role #updates { padding-left: 20px; margin-bottom: 16px; }
+.shop-role #feedback { margin-top: 12px; }
+
 /* =====================================================================
    TechCare Online Repair Shop  -  style.css
    ---------------------------------------------------------------------
