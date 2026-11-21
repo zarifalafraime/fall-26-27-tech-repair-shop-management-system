@@ -1,19 +1,23 @@
 function renderAssignments() {
   const body = element("assignments");
   body.innerHTML = "";
-  for (const job of shop.repairs) {
+  for (let index = 0; index < shop.repairs.length; index++) {
+    const job = shop.repairs[index];
     const cell = addCell(addRow(body, [job.id, job.customer, job.device, job.issue]), "");
     if (job.technician) {
       cell.innerHTML = job.technician;
     } else {
-      action(cell, "Assign Demo Technician", function () {
-        job.technician = "Demo Technician";
-        job.status = "Assigned";
-        shop.updates.push("Repair #" + job.id + " assigned to " + job.technician + ".");
-        renderAssignments();
-      });
+      cell.innerHTML = "<button type='button' onclick='assignTechnician(" + index + ")'>Assign Demo Technician</button>";
     }
   }
+}
+
+function assignTechnician(index) {
+  const job = shop.repairs[index];
+  job.technician = "Demo Technician";
+  job.status = "Assigned";
+  shop.updates.push("Repair #" + job.id + " assigned to " + job.technician + ".");
+  renderAssignments();
 }
 
 function renderReturns() {
