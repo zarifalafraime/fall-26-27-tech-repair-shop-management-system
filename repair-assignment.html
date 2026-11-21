@@ -5,21 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Repair Assignment | TechCare</title>
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/common.js"></script>
   <script defer src="js/shop-data.js"></script>
   <script defer src="js/manager.js"></script>
 </head>
-<body class="shop-role">
-  <header class="header"><h1>Manager - Repair Assignment</h1></header>
-  <nav aria-label="Manager pages">
-    <a href="repair-assignment.html" aria-current="page">Repair Assignment</a>
+<body>
+  <header class="header"><h1 class="logo">Manager - Repair Assignment</h1></header>
+  <nav class="topnav" aria-label="Manager pages">
+    <a href="repair-assignment.html" class="active" aria-current="page">Repair Assignment</a>
     <a href="damaged-returns.html">Damaged and Returned Products</a>
     <a href="stock-alerts.html">Stock Alerts</a>
   </nav>
   <main class="container">
-    <table>
+    <div class="table-wrapper"><table class="data-table">
       <thead><tr><th scope="col">Request</th><th scope="col">Customer</th><th scope="col">Device</th><th scope="col">Issue</th><th scope="col">Technician</th></tr></thead>
       <tbody id="assignments"></tbody>
-    </table>
+    </table></div>
     <p id="feedback" role="status"></p>
   </main>
 </body>

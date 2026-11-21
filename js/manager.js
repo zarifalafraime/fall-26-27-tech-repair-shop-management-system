@@ -1,16 +1,15 @@
 function renderAssignments() {
   const body = element("assignments");
-  body.replaceChildren();
+  body.innerHTML = "";
   for (const job of shop.repairs) {
-    const cell = addRow(body, [job.id, job.customer, job.device, job.issue]).insertCell();
+    const cell = addCell(addRow(body, [job.id, job.customer, job.device, job.issue]), "");
     if (job.technician) {
-      cell.textContent = job.technician;
+      cell.innerHTML = job.technician;
     } else {
       action(cell, "Assign Demo Technician", function () {
         job.technician = "Demo Technician";
         job.status = "Assigned";
-        shop.updates.unshift("Repair #" + job.id + " assigned to " + job.technician + ".");
-        saveShop();
+        shop.updates.push("Repair #" + job.id + " assigned to " + job.technician + ".");
         renderAssignments();
       });
     }
@@ -19,7 +18,7 @@ function renderAssignments() {
 
 function renderReturns() {
   const body = element("returnRows");
-  body.replaceChildren();
+  body.innerHTML = "";
   for (const item of shop.returns) addRow(body, [item.product, item.kind, item.quantity, item.reason]);
   emptyTable(body, 4, "No damaged or returned products recorded.");
 }
@@ -29,8 +28,7 @@ function saveReturn(form) {
     message("Enter a product and a reason.");
     return false;
   }
-  shop.returns.unshift({product: value("product"), kind: value("kind"), quantity: Number(value("quantity")), reason: value("reason")});
-  saveShop();
+  shop.returns.push({product: value("product"), kind: value("kind"), quantity: Number(value("quantity")), reason: value("reason")});
   form.reset();
   renderReturns();
   message("Product record saved.");
@@ -39,7 +37,7 @@ function saveReturn(form) {
 
 function renderStock() {
   const body = element("stockRows");
-  body.replaceChildren();
+  body.innerHTML = "";
   for (const item of shop.stock) {
     const alert = item.quantity <= item.minimum ? "Low stock" : "In stock";
     addRow(body, [item.name, item.quantity, item.minimum, alert]);
@@ -47,9 +45,9 @@ function renderStock() {
 }
 
 function setMinimum() {
-  const item = shop.stock.find(part => part.name === value("part"));
-  item.minimum = Number(value("minimum"));
-  saveShop();
+  for (const item of shop.stock) {
+    if (item.name === value("part")) item.minimum = Number(value("minimum"));
+  }
   renderStock();
   message("Minimum quantity updated.");
   return false;
@@ -58,6 +56,6 @@ function setMinimum() {
 if (element("assignments")) renderAssignments();
 if (element("returnRows")) renderReturns();
 if (element("stockRows")) {
-  for (const item of shop.stock) element("part").add(new Option(item.name, item.name));
+  for (const item of shop.stock) addOption(element("part"), item.name, item.name);
   renderStock();
 }

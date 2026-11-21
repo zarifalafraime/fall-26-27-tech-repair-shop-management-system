@@ -5,28 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Stock Alerts | TechCare</title>
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/common.js"></script>
   <script defer src="js/shop-data.js"></script>
   <script defer src="js/manager.js"></script>
 </head>
-<body class="shop-role">
-  <header class="header"><h1>Manager - Stock Alerts</h1></header>
-  <nav aria-label="Manager pages">
+<body>
+  <header class="header"><h1 class="logo">Manager - Stock Alerts</h1></header>
+  <nav class="topnav" aria-label="Manager pages">
     <a href="repair-assignment.html">Repair Assignment</a>
     <a href="damaged-returns.html">Damaged and Returned Products</a>
-    <a href="stock-alerts.html" aria-current="page">Stock Alerts</a>
+    <a href="stock-alerts.html" class="active" aria-current="page">Stock Alerts</a>
   </nav>
   <main class="container">
-    <form onsubmit="return setMinimum(this)">
+    <form class="card" onsubmit="return setMinimum(this)">
       <label for="part">Stock item</label>
       <select id="part" required></select>
       <label for="minimum">Minimum quantity</label>
       <input id="minimum" type="number" min="0" step="1" required>
-      <button type="submit">Save minimum</button>
+      <button class="btn" type="submit">Save minimum</button>
     </form>
-    <table>
+    <div class="table-wrapper"><table class="data-table">
       <thead><tr><th scope="col">Item</th><th scope="col">Available</th><th scope="col">Minimum</th><th scope="col">Alert</th></tr></thead>
       <tbody id="stockRows"></tbody>
-    </table>
+    </table></div>
     <p id="feedback" role="status"></p>
   </main>
 </body>
