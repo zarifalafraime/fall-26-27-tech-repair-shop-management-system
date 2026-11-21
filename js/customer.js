@@ -34,7 +34,8 @@ function renderHistory() {
   emptyTable(element("history"), 6, "No repair requests yet.");
 }
 
-function decide(charge, decision) {
+function decide(index, decision) {
+  const charge = shop.charges[index];
   charge.status = decision;
   shop.updates.push("Additional charge for #" + charge.job + ": " + decision + ".");
   renderUpdates();
@@ -45,23 +46,25 @@ function renderUpdates() {
   list.innerHTML = "";
   for (const update of shop.updates) {
     const li = document.createElement("li");
-    li.innerHTML = displayText(update);
+    li.innerHTML = update;
     list.appendChild(li);
   }
   const body = element("decisions");
   body.innerHTML = "";
-  for (const charge of shop.charges) {
+  for (let index = 0; index < shop.charges.length; index++) {
+    const charge = shop.charges[index];
     let mine = false;
     for (const job of myRepairs) {
       if (job.id === charge.job) mine = true;
     }
-    if (!mine) continue;
-    const cell = addCell(addRow(body, [charge.job, charge.work, charge.cost]), "");
-    if (charge.status === "Pending") {
-      action(cell, "Approve", function () { decide(charge, "Approved"); });
-      action(cell, "Decline", function () { decide(charge, "Declined"); });
-    } else {
-      cell.innerHTML = charge.status;
+    if (mine) {
+      const cell = addCell(addRow(body, [charge.job, charge.work, charge.cost]), "");
+      if (charge.status === "Pending") {
+        cell.innerHTML = "<button type='button' onclick=\"decide(" + index + ", 'Approved')\">Approve</button> " +
+          "<button type='button' onclick=\"decide(" + index + ", 'Declined')\">Decline</button>";
+      } else {
+        cell.innerHTML = charge.status;
+      }
     }
   }
   emptyTable(body, 4, "No additional charges.");
