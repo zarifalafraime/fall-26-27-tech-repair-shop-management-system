@@ -5,32 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Repair Records | TechCare</title>
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/common.js"></script>
   <script defer src="js/shop-data.js"></script>
   <script defer src="js/technician.js"></script>
 </head>
-<body class="shop-role">
-  <header class="header"><h1>Technician - Repair Records</h1></header>
-  <nav aria-label="Technician pages">
+<body>
+  <header class="header"><h1 class="logo">Technician - Repair Records</h1></header>
+  <nav class="topnav" aria-label="Technician pages">
     <a href="assigned-repairs.html">Assigned Repairs</a>
-    <a href="repair-records.html" aria-current="page">Repair Records</a>
+    <a href="repair-records.html" class="active" aria-current="page">Repair Records</a>
     <a href="charge-approval.html">Charge Approval</a>
   </nav>
   <main class="container">
-    <form onsubmit="return saveRecord(this)">
+    <form class="card" onsubmit="return saveRecord(this)">
       <label for="job">Assigned repair</label>
       <select id="job" required></select>
       <label for="diagnosis">Diagnosis</label>
       <textarea id="diagnosis" required></textarea>
       <label for="parts">Spare parts used (optional)</label>
-      <input id="parts">
+      <input type="text" id="parts">
       <label for="notes">Repair notes</label>
       <textarea id="notes" required></textarea>
-      <button type="submit">Save repair record</button>
+      <button class="btn" type="submit">Save repair record</button>
     </form>
-    <table>
+    <div class="table-wrapper"><table class="data-table">
       <thead><tr><th scope="col">Request</th><th scope="col">Diagnosis</th><th scope="col">Parts</th><th scope="col">Notes</th></tr></thead>
       <tbody id="records"></tbody>
-    </table>
+    </table></div>
     <p id="feedback" role="status"></p>
   </main>
 </body>
