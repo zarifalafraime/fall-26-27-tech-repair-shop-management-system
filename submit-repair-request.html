@@ -5,27 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Submit Repair Request | TechCare</title>
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/common.js"></script>
   <script defer src="js/shop-data.js"></script>
   <script defer src="js/customer.js"></script>
 </head>
-<body class="shop-role">
-  <header class="header"><h1>Customer - Submit Repair Request</h1></header>
-  <nav aria-label="Customer pages">
-    <a href="submit-repair-request.html" aria-current="page">Submit Repair Request</a>
+<body>
+  <header class="header"><h1 class="logo">Customer - Submit Repair Request</h1></header>
+  <nav class="topnav" aria-label="Customer pages">
+    <a href="submit-repair-request.html" class="active" aria-current="page">Submit Repair Request</a>
     <a href="repair-history.html">Repair History</a>
     <a href="notifications.html">Notifications</a>
   </nav>
   <main class="container">
-    <form onsubmit="return submitRepair(this)">
+    <form class="card" onsubmit="return submitRepair(this)">
       <label for="device">Device type</label>
-      <input id="device" required>
+      <input type="text" id="device" required>
       <label for="model">Model</label>
-      <input id="model" required>
+      <input type="text" id="model" required>
       <label for="serial">Serial number</label>
-      <input id="serial" required>
+      <input type="text" id="serial" required>
       <label for="issue">Issue description</label>
       <textarea id="issue" required></textarea>
-      <button type="submit">Submit request</button>
+      <button class="btn" type="submit">Submit request</button>
     </form>
     <p id="feedback" role="status"></p>
   </main>
