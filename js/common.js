@@ -4,7 +4,10 @@ function field(id) {
 
 function addCell(row, value) {
   const cell = document.createElement("td");
-  cell.appendChild(document.createTextNode(value));
+  cell.innerHTML = String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
   row.appendChild(cell);
   return cell;
 }
