@@ -5,21 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Repair History | TechCare</title>
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/common.js"></script>
   <script defer src="js/shop-data.js"></script>
   <script defer src="js/customer.js"></script>
 </head>
-<body class="shop-role">
-  <header class="header"><h1>Customer - Repair History</h1></header>
-  <nav aria-label="Customer pages">
+<body>
+  <header class="header"><h1 class="logo">Customer - Repair History</h1></header>
+  <nav class="topnav" aria-label="Customer pages">
     <a href="submit-repair-request.html">Submit Repair Request</a>
-    <a href="repair-history.html" aria-current="page">Repair History</a>
+    <a href="repair-history.html" class="active" aria-current="page">Repair History</a>
     <a href="notifications.html">Notifications</a>
   </nav>
   <main class="container">
-    <table>
+    <div class="table-wrapper"><table class="data-table">
       <thead><tr><th scope="col">Request</th><th scope="col">Device</th><th scope="col">Issue</th><th scope="col">Status</th><th scope="col">Approved additional charges (Tk)</th><th scope="col">Repair notes</th></tr></thead>
       <tbody id="history"></tbody>
-    </table>
+    </table></div>
     <p id="feedback" role="status"></p>
   </main>
 </body>
