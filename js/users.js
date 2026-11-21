@@ -2,29 +2,30 @@ let editIndex = -1;
 
 function renderUsers() {
   const body = field("userRows");
-  body.replaceChildren();
-  users.forEach(function (user, index) {
-    const row = body.insertRow();
-    addCells(row, [user.name, user.email, user.role, user.status]);
-    const actions = row.insertCell();
+  body.innerHTML = "";
+  for (let index = 0; index < users.length; index++) {
+    const user = users[index];
+    const row = addRow(body, [user.name, user.email, user.role, user.status]);
+    const actions = addCell(row, "");
     const edit = document.createElement("button");
-    edit.textContent = "Edit";
-    edit.onclick = function () { editUser(index); };
+    edit.innerHTML = "Edit";
+    edit.addEventListener("click", function () { editUser(index); });
     const ban = document.createElement("button");
-    ban.textContent = user.status === "Active" ? "Ban" : "Activate";
-    ban.onclick = function () {
+    ban.innerHTML = user.status === "Active" ? "Ban" : "Activate";
+    ban.addEventListener("click", function () {
       user.status = user.status === "Active" ? "Inactive" : "Active";
       logAction({name: "Demo Admin", role: "Admin"}, user.email + " marked " + user.status);
       renderUsers();
-    };
-    actions.append(edit, ban);
-  });
+    });
+    actions.appendChild(edit);
+    actions.appendChild(ban);
+  }
 }
 
 function editUser(index) {
   editIndex = index;
   for (const key of ["name", "email", "role", "status"]) field(key).value = users[index][key];
-  field("saveButton").textContent = "Save changes";
+  field("saveButton").innerHTML = "Save changes";
 }
 
 function saveUser() {
@@ -37,11 +38,13 @@ function saveUser() {
   }
   const values = {name, email, role: field("role").value, status: field("status").value};
   if (editIndex === -1) users.push(values);
-  else Object.assign(users[editIndex], values);
+  else {
+    for (const key of ["name", "email", "role", "status"]) users[editIndex][key] = values[key];
+  }
   logAction({name: "Demo Admin", role: "Admin"}, (editIndex === -1 ? "Created " : "Updated ") + email);
   editIndex = -1;
   field("userForm").reset();
-  field("saveButton").textContent = "Create User";
+  field("saveButton").innerHTML = "Create User";
   showMessage("User saved.");
   renderUsers();
   return false;

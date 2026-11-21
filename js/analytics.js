@@ -1,10 +1,16 @@
 function generateReport() {
-  const completed = repairs.filter(repair => repair.status === "Completed").length;
-  const lowStock = stock.filter(part => part.quantity <= part.minimum).length;
-  field("userTotal").textContent = users.length;
-  field("openTotal").textContent = repairs.length - completed;
-  field("completedTotal").textContent = completed;
-  field("stockTotal").textContent = lowStock;
-  field("returnsTotal").textContent = returns.length;
+  let completed = 0;
+  let lowStock = 0;
+  for (const repair of shop.repairs) {
+    if (repair.status === "Completed") completed++;
+  }
+  for (const part of shop.stock) {
+    if (part.quantity <= part.minimum) lowStock++;
+  }
+  field("userTotal").innerHTML = users.length;
+  field("openTotal").innerHTML = shop.repairs.length - completed;
+  field("completedTotal").innerHTML = completed;
+  field("stockTotal").innerHTML = lowStock;
+  field("returnsTotal").innerHTML = shop.returns.length;
 }
 generateReport();

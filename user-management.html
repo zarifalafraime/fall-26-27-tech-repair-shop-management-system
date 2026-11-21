@@ -9,8 +9,9 @@
   <script defer src="js/users.js"></script>
 </head>
 <body>
-  <h1>Admin - User Management</h1>
-  <nav>
+  <header class="header"><h1 class="logo">Admin - User Management</h1></header>
+  <main class="container">
+  <nav class="topnav">
     <a href="user-management.html">User Management</a> |
     <a href="activity-logs.html">Activity Logs</a> |
     <a href="analytics.html">Analytics</a>
@@ -19,7 +20,7 @@
   <h2>Manage Users</h2>
   <h3>Create User</h3>
   <p id="message" role="status"></p>
-  <form id="userForm" onsubmit="return saveUser()">
+  <form class="card" id="userForm" onsubmit="return saveUser()">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
     <br><br>
@@ -44,9 +45,10 @@
   </form>
   <hr>
   <h2>User List</h2>
-  <table border="1">
+  <div class="table-wrapper"><table class="data-table">
     <tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Action</th></tr>
     <tbody id="userRows"></tbody>
-  </table>
+  </table></div>
+  </main>
 </body>
 </html>
