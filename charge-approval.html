@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charge Approval | TechCare</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/shop-data.js"></script>
+  <script defer src="js/technician.js"></script>
 </head>
-
-<body>
-  <h1>Technician - Charge Approval</h1>
-  <nav>
-    <a href="assigned-repairs.html">Assigned Repairs</a> |
-    <a href="repair-records.html">Repair Records</a> |
-    <a href="charge-approval.html">Charge Approval</a>
+<body class="shop-role">
+  <header class="header"><h1>Technician - Charge Approval</h1></header>
+  <nav aria-label="Technician pages">
+    <a href="assigned-repairs.html">Assigned Repairs</a>
+    <a href="repair-records.html">Repair Records</a>
+    <a href="charge-approval.html" aria-current="page">Charge Approval</a>
   </nav>
-  <hr>
-  <h2>Request Additional Repair Approval</h2>
-  <form>
-    <label for="request-id">Request ID:</label><br>
-    <input type="text" id="request-id" name="request_id"><br><br>
-
-    <label for="additional-work">Additional Work:</label><br>
-    <textarea id="additional-work" name="additional_work" rows="4" cols="40"></textarea><br><br>
-
-    <label for="cost">Cost:</label><br>
-    <input type="text" id="cost" name="cost"><br><br>
-
-    <input type="submit" value="Submit Request">
-  </form>
-  <h2>Approval Requests</h2>
-  <table border="1">
-    <tr>
-      <th>Request ID</th>
-      <th>Additional Work</th>
-      <th>Cost</th>
-      <th>Status</th>
-    </tr>
-  </table>
+  <main class="container">
+    <form onsubmit="return requestCharge(this)">
+      <label for="job">Assigned repair</label>
+      <select id="job" required></select>
+      <label for="work">Additional work</label>
+      <textarea id="work" required></textarea>
+      <label for="cost">Additional charge (Tk)</label>
+      <input id="cost" type="number" min="0.01" step="0.01" required>
+      <button type="submit">Request approval</button>
+    </form>
+    <table>
+      <thead><tr><th scope="col">Request</th><th scope="col">Work</th><th scope="col">Cost (Tk)</th><th scope="col">Decision</th></tr></thead>
+      <tbody id="charges"></tbody>
+    </table>
+    <p id="feedback" role="status"></p>
+  </main>
 </body>
-
 </html>
