@@ -7,10 +7,7 @@ function renderJobs() {
   const body = element("jobs");
   for (const job of assigned) {
     const cell = addCell(addRow(body, [job.id, job.customer, job.device, job.issue, job.status]), "");
-    const link = document.createElement("a");
-    link.href = "repair-records.html";
-    link.innerHTML = "View record";
-    cell.appendChild(link);
+    cell.innerHTML = "<a href='repair-records.html'>View record</a>";
   }
   emptyTable(body, 6, "No repairs assigned.");
 }
@@ -24,7 +21,9 @@ function selectedJob() {
 
 function fillRecord() {
   const job = selectedJob();
-  for (const key of ["diagnosis", "parts", "notes"]) element(key).value = job && job[key] ? job[key] : "";
+  element("diagnosis").value = job && job.diagnosis ? job.diagnosis : "";
+  element("parts").value = job && job.parts ? job.parts : "";
+  element("notes").value = job && job.notes ? job.notes : "";
 }
 
 function renderRecords() {
