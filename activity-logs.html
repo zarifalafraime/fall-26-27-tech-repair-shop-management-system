@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
-  <script defer src="js/data.js"></script>
-  <script defer src="js/common.js"></script>
-  <script defer src="js/log.js"></script>
 </head>
 <body>
   <header class="header"><h1 class="logo">Admin - Activity Logs</h1></header>
@@ -19,11 +16,14 @@
   <hr>
   <h2>System Activity</h2>
   <label for="logSearch">Search activity</label>
-  <input type="text" id="logSearch" oninput="renderLog()">
+  <input type="text" id="logSearch" onkeyup="renderLog()">
   <div class="table-wrapper"><table class="data-table">
     <tr><th>Date and Time</th><th>User</th><th>Role</th><th>Details</th></tr>
     <tbody id="logRows"></tbody>
   </table></div>
   </main>
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/log.js"></script>
 </body>
 </html>
