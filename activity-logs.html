@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/data.js"></script>
+  <script defer src="js/common.js"></script>
+  <script defer src="js/log.js"></script>
 </head>
 <body>
   <h1>Admin - Activity Logs</h1>
@@ -14,9 +17,11 @@
   </nav>
   <hr>
   <h2>System Activity</h2>
+  <label for="logSearch">Search activity</label>
+  <input id="logSearch" oninput="renderLog()">
   <table border="1">
     <tr><th>Date and Time</th><th>User</th><th>Role</th><th>Details</th></tr>
-    <tr><td>2026-11-01 10:00</td><td>Zarif</td><td>Technician</td><td>Repair #1001 marked in progress</td></tr>
+    <tbody id="logRows"></tbody>
   </table>
 </body>
 </html>
