@@ -2,19 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repair History | TechCare</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/shop-data.js"></script>
+  <script defer src="js/customer.js"></script>
 </head>
-<body>
-  <h1>Customer - Repair History</h1>
-  <nav>
-    <a href="submit-repair-request.html"><button type="button">Submit Repair Request</button></a>
-    <a href="repair-history.html"><button type="button">Repair History</button></a>
-    <a href="notifications.html"><button type="button">Notifications</button></a>
+<body class="shop-role">
+  <header class="header"><h1>Customer - Repair History</h1></header>
+  <nav aria-label="Customer pages">
+    <a href="submit-repair-request.html">Submit Repair Request</a>
+    <a href="repair-history.html" aria-current="page">Repair History</a>
+    <a href="notifications.html">Notifications</a>
   </nav>
-  <h2>My Repair Requests</h2>
-  <table border="1">
-    <tr><th>Request ID</th><th>Device</th><th>Issue</th><th>Status</th><th>Estimated Cost</th><th>Details</th></tr>
-    <tr><td>1001</td><td>Laptop</td><td>Does not turn on</td><td>Pending</td><td>Not available</td><td><a href="notifications.html">View updates</a></td></tr>
-  </table>
+  <main class="container">
+    <table>
+      <thead><tr><th scope="col">Request</th><th scope="col">Device</th><th scope="col">Issue</th><th scope="col">Status</th><th scope="col">Approved additional charges (Tk)</th><th scope="col">Repair notes</th></tr></thead>
+      <tbody id="history"></tbody>
+    </table>
+    <p id="feedback" role="status"></p>
+  </main>
 </body>
 </html>
