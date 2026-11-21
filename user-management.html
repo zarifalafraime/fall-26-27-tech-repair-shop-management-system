@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/data.js"></script>
+  <script defer src="js/common.js"></script>
+  <script defer src="js/users.js"></script>
 </head>
 <body>
   <h1>Admin - User Management</h1>
@@ -15,7 +18,8 @@
   <hr>
   <h2>Manage Users</h2>
   <h3>Create User</h3>
-  <form>
+  <p id="message" role="status"></p>
+  <form id="userForm" onsubmit="return saveUser()">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
     <br><br>
@@ -24,6 +28,7 @@
     <br><br>
     <label for="role">Role:</label>
     <select id="role" name="role">
+      <option value="Customer">Customer</option>
       <option value="Technician">Technician</option>
       <option value="Manager">Manager</option>
       <option value="Admin">Admin</option>
@@ -35,22 +40,13 @@
       <option value="Inactive">Inactive</option>
     </select>
     <br><br>
-    <button type="submit">Create User</button>
+    <button id="saveButton" type="submit">Create User</button>
   </form>
   <hr>
   <h2>User List</h2>
   <table border="1">
     <tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Action</th></tr>
-    <tr>
-      <td>Zarif</td>
-      <td>21-44568-1@student.aiub.edu</td>
-      <td>Admin</td>
-      <td>Active</td>
-      <td>
-        <button type="button">Edit</button>
-        <button type="button">Ban</button>
-      </td>
-    </tr>
+    <tbody id="userRows"></tbody>
   </table>
 </body>
 </html>
