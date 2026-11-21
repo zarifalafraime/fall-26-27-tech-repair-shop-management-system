@@ -5,32 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Damaged and Returned Products | TechCare</title>
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/common.js"></script>
   <script defer src="js/shop-data.js"></script>
   <script defer src="js/manager.js"></script>
 </head>
-<body class="shop-role">
-  <header class="header"><h1>Manager - Damaged and Returned Products</h1></header>
-  <nav aria-label="Manager pages">
+<body>
+  <header class="header"><h1 class="logo">Manager - Damaged and Returned Products</h1></header>
+  <nav class="topnav" aria-label="Manager pages">
     <a href="repair-assignment.html">Repair Assignment</a>
-    <a href="damaged-returns.html" aria-current="page">Damaged and Returned Products</a>
+    <a href="damaged-returns.html" class="active" aria-current="page">Damaged and Returned Products</a>
     <a href="stock-alerts.html">Stock Alerts</a>
   </nav>
   <main class="container">
-    <form onsubmit="return saveReturn(this)">
+    <form class="card" onsubmit="return saveReturn(this)">
       <label for="product">Product</label>
-      <input id="product" required>
+      <input type="text" id="product" required>
       <label for="kind">Record type</label>
       <select id="kind"><option>Damaged</option><option>Returned</option></select>
       <label for="quantity">Quantity</label>
       <input id="quantity" type="number" min="1" step="1" required>
       <label for="reason">Reason</label>
       <textarea id="reason" required></textarea>
-      <button type="submit">Save record</button>
+      <button class="btn" type="submit">Save record</button>
     </form>
-    <table>
+    <div class="table-wrapper"><table class="data-table">
       <thead><tr><th scope="col">Product</th><th scope="col">Type</th><th scope="col">Quantity</th><th scope="col">Reason</th></tr></thead>
       <tbody id="returnRows"></tbody>
-    </table>
+    </table></div>
     <p id="feedback" role="status"></p>
   </main>
 </body>
