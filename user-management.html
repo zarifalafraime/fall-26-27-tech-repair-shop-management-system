@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="accounts.js"></script>
+  <script defer src="admin.js"></script>
 </head>
 <body>
   <h1>Admin - User Management</h1>
@@ -24,6 +26,7 @@
     <br><br>
     <label for="role">Role:</label>
     <select id="role" name="role">
+      <option value="Customer">Customer</option>
       <option value="Technician">Technician</option>
       <option value="Manager">Manager</option>
       <option value="Admin">Admin</option>
@@ -36,6 +39,7 @@
     </select>
     <br><br>
     <button type="submit">Create User</button>
+    <button type="reset">Cancel</button>
   </form>
   <hr>
   <h2>User List</h2>
