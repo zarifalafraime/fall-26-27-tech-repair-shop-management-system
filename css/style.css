@@ -880,33 +880,3 @@ body > p {
   color: white;
   text-decoration: underline;
 }
-
-
-/* =====================================================================
-   RESPONSIVE: stack columns on small screens
-   ===================================================================== */
-@media (max-width: 600px) {
-  .row {
-    flex-direction: column;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  body > form {
-    margin: 16px;
-    padding: 20px;
-  }
-
-  .topnav,
-  nav {
-    padding: 0 8px;
-  }
-
-  body > h1 {
-    font-size: 1.2rem;
-    padding: 14px 16px;
-  }
-}
-
