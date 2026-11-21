@@ -2,17 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stock Alerts | TechCare</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/shop-data.js"></script>
+  <script defer src="js/manager.js"></script>
 </head>
-<body>
-  <h1>Manager - Stock Alerts</h1>
-  <nav>
-    <a href="repair-assignment.html">Repair Assignment</a> |
-    <a href="damaged-returns.html">Damaged and Returned Products</a> |
-    <a href="stock-alerts.html">Stock Alerts</a>
+<body class="shop-role">
+  <header class="header"><h1>Manager - Stock Alerts</h1></header>
+  <nav aria-label="Manager pages">
+    <a href="repair-assignment.html">Repair Assignment</a>
+    <a href="damaged-returns.html">Damaged and Returned Products</a>
+    <a href="stock-alerts.html" aria-current="page">Stock Alerts</a>
   </nav>
-  <hr>
-  <h2>Stock Alerts</h2>
-  <table border="1"><tr><th>Item</th><th>Current Quantity</th><th>Minimum Quantity</th><th>Alert</th></tr></table>
+  <main class="container">
+    <form onsubmit="return setMinimum(this)">
+      <label for="part">Stock item</label>
+      <select id="part" required></select>
+      <label for="minimum">Minimum quantity</label>
+      <input id="minimum" type="number" min="0" step="1" required>
+      <button type="submit">Save minimum</button>
+    </form>
+    <table>
+      <thead><tr><th scope="col">Item</th><th scope="col">Available</th><th scope="col">Minimum</th><th scope="col">Alert</th></tr></thead>
+      <tbody id="stockRows"></tbody>
+    </table>
+    <p id="feedback" role="status"></p>
+  </main>
 </body>
 </html>
