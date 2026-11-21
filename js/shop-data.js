@@ -24,19 +24,8 @@ function message(text) {
   element("feedback").innerHTML = text;
 }
 
-function action(cell, label, handler) {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.innerHTML = label;
-  button.addEventListener("click", handler);
-  cell.appendChild(button);
-}
-
 function emptyTable(body, columns, text) {
-  if (!body.rows.length) {
-    const row = addRow(body, []);
-    const cell = addCell(row, text);
-    cell.colSpan = columns;
-
+  if (body.innerHTML === "") {
+    body.innerHTML = "<tr><td colspan='" + columns + "'>" + text + "</td></tr>";
   }
 }

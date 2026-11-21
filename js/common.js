@@ -2,23 +2,9 @@ function field(id) {
   return document.getElementById(id);
 }
 
-// Encode values before displaying form input as HTML.
-function displayText(value) {
-  let result = "";
-  for (const letter of "" + value) {
-    switch (letter) {
-      case "<": result += "&lt;"; break;
-      case ">": result += "&gt;"; break;
-      case "&": result += "&amp;"; break;
-      default: result += letter;
-    }
-  }
-  return result;
-}
-
 function addCell(row, value) {
   const cell = document.createElement("td");
-  cell.innerHTML = displayText(value);
+  cell.appendChild(document.createTextNode(value));
   row.appendChild(cell);
   return cell;
 }
@@ -33,7 +19,7 @@ function addRow(body, values) {
 function addOption(select, label, value) {
   const option = document.createElement("option");
   option.value = value;
-  option.innerHTML = displayText(label);
+  option.innerHTML = label;
   select.appendChild(option);
 }
 
@@ -45,7 +31,7 @@ function findUser(email) {
 }
 
 function showMessage(text) {
-  field("message").innerHTML = displayText(text);
+  field("message").innerHTML = text;
 }
 
 function logAction(user, details) {

@@ -7,24 +7,25 @@ function renderUsers() {
     const user = users[index];
     const row = addRow(body, [user.name, user.email, user.role, user.status]);
     const actions = addCell(row, "");
-    const edit = document.createElement("button");
-    edit.innerHTML = "Edit";
-    edit.addEventListener("click", function () { editUser(index); });
-    const ban = document.createElement("button");
-    ban.innerHTML = user.status === "Active" ? "Ban" : "Activate";
-    ban.addEventListener("click", function () {
-      user.status = user.status === "Active" ? "Inactive" : "Active";
-      logAction({name: "Demo Admin", role: "Admin"}, user.email + " marked " + user.status);
-      renderUsers();
-    });
-    actions.appendChild(edit);
-    actions.appendChild(ban);
+    const label = user.status === "Active" ? "Ban" : "Activate";
+    actions.innerHTML = "<button type='button' onclick='editUser(" + index + ")'>Edit</button> " +
+      "<button type='button' onclick='toggleStatus(" + index + ")'>" + label + "</button>";
   }
+}
+
+function toggleStatus(index) {
+  const user = users[index];
+  user.status = user.status === "Active" ? "Inactive" : "Active";
+  logAction({name: "Demo Admin", role: "Admin"}, user.email + " marked " + user.status);
+  renderUsers();
 }
 
 function editUser(index) {
   editIndex = index;
-  for (const key of ["name", "email", "role", "status"]) field(key).value = users[index][key];
+  field("name").value = users[index].name;
+  field("email").value = users[index].email;
+  field("role").value = users[index].role;
+  field("status").value = users[index].status;
   field("saveButton").innerHTML = "Save changes";
 }
 
@@ -39,7 +40,10 @@ function saveUser() {
   const values = {name, email, role: field("role").value, status: field("status").value};
   if (editIndex === -1) users.push(values);
   else {
-    for (const key of ["name", "email", "role", "status"]) users[editIndex][key] = values[key];
+    users[editIndex].name = values.name;
+    users[editIndex].email = values.email;
+    users[editIndex].role = values.role;
+    users[editIndex].status = values.status;
   }
   logAction({name: "Demo Admin", role: "Admin"}, (editIndex === -1 ? "Created " : "Updated ") + email);
   editIndex = -1;
