@@ -5,30 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Charge Approval | TechCare</title>
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/common.js"></script>
   <script defer src="js/shop-data.js"></script>
   <script defer src="js/technician.js"></script>
 </head>
-<body class="shop-role">
-  <header class="header"><h1>Technician - Charge Approval</h1></header>
-  <nav aria-label="Technician pages">
+<body>
+  <header class="header"><h1 class="logo">Technician - Charge Approval</h1></header>
+  <nav class="topnav" aria-label="Technician pages">
     <a href="assigned-repairs.html">Assigned Repairs</a>
     <a href="repair-records.html">Repair Records</a>
-    <a href="charge-approval.html" aria-current="page">Charge Approval</a>
+    <a href="charge-approval.html" class="active" aria-current="page">Charge Approval</a>
   </nav>
   <main class="container">
-    <form onsubmit="return requestCharge(this)">
+    <form class="card" onsubmit="return requestCharge(this)">
       <label for="job">Assigned repair</label>
       <select id="job" required></select>
       <label for="work">Additional work</label>
       <textarea id="work" required></textarea>
       <label for="cost">Additional charge (Tk)</label>
       <input id="cost" type="number" min="0.01" step="0.01" required>
-      <button type="submit">Request approval</button>
+      <button class="btn" type="submit">Request approval</button>
     </form>
-    <table>
+    <div class="table-wrapper"><table class="data-table">
       <thead><tr><th scope="col">Request</th><th scope="col">Work</th><th scope="col">Cost (Tk)</th><th scope="col">Decision</th></tr></thead>
       <tbody id="charges"></tbody>
-    </table>
+    </table></div>
     <p id="feedback" role="status"></p>
   </main>
 </body>
