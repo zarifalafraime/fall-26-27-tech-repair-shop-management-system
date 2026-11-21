@@ -6,9 +6,6 @@ let users = [
   {name: "Demo Customer", email: "customer@example.test", password: "customer1234", role: "Customer", status: "Active"}
 ];
 
-let repairs = [{id: 1001, status: "Pending"}];
-let stock = [{item: "Laptop adapter", quantity: 2, minimum: 3}];
-let returns = [];
 let activityLog = [
   {time: "2026-11-01 10:00", user: "Demo Technician", role: "Technician", details: "Received repair #1001"}
 ];

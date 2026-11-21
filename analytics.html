@@ -6,11 +6,13 @@
   <link rel="stylesheet" href="css/style.css">
   <script defer src="js/data.js"></script>
   <script defer src="js/common.js"></script>
+  <script defer src="js/shop-data.js"></script>
   <script defer src="js/analytics.js"></script>
 </head>
 <body>
-  <h1>Admin - Analytics</h1>
-  <nav>
+  <header class="header"><h1 class="logo">Admin - Analytics</h1></header>
+  <main class="container">
+  <nav class="topnav">
     <a href="user-management.html">User Management</a> |
     <a href="activity-logs.html">Activity Logs</a> |
     <a href="analytics.html">Analytics</a>
@@ -25,5 +27,6 @@
     <li>Low-stock items: <span id="stockTotal"></span></li>
     <li>Recorded damaged or returned products: <span id="returnsTotal"></span></li>
   </ul>
+  </main>
 </body>
 </html>

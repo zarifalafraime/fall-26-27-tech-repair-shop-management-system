@@ -9,21 +9,23 @@
   <script defer src="js/login.js"></script>
 </head>
 <body>
-  <h1>Sign In</h1>
+  <header class="header"><h1 class="logo">Sign In</h1></header>
+  <main class="container">
   <p>Demo admin: admin@example.test / admin1234</p>
 
   <p id="message" role="status"></p>
-  <form id="loginForm" onsubmit="return validateLogin()">
+  <form class="card" id="loginForm" onsubmit="return validateLogin()">
     <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email"><br><br>
+    <input type="email" id="email"><br><br>
 
     <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password"><br><br>
+    <input type="password" id="password"><br><br>
 
-    <input type="submit" value="Sign In">
+    <input class="btn" type="submit" value="Sign In">
   </form>
 
   <br>
   <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+  </main>
 </body>
 </html>

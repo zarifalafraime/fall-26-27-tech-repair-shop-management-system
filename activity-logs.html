@@ -9,8 +9,9 @@
   <script defer src="js/log.js"></script>
 </head>
 <body>
-  <h1>Admin - Activity Logs</h1>
-  <nav>
+  <header class="header"><h1 class="logo">Admin - Activity Logs</h1></header>
+  <main class="container">
+  <nav class="topnav">
     <a href="user-management.html">User Management</a> |
     <a href="activity-logs.html">Activity Logs</a> |
     <a href="analytics.html">Analytics</a>
@@ -18,10 +19,11 @@
   <hr>
   <h2>System Activity</h2>
   <label for="logSearch">Search activity</label>
-  <input id="logSearch" oninput="renderLog()">
-  <table border="1">
+  <input type="text" id="logSearch" oninput="renderLog()">
+  <div class="table-wrapper"><table class="data-table">
     <tr><th>Date and Time</th><th>User</th><th>Role</th><th>Details</th></tr>
     <tbody id="logRows"></tbody>
-  </table>
+  </table></div>
+  </main>
 </body>
 </html>

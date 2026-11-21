@@ -4,9 +4,14 @@ function validateLogin() {
     showMessage("Check your email, password and account status.");
     return false;
   }
-  const pages = {Admin: "user-management.html", Manager: "repair-assignment.html",
-    Technician: "assigned-repairs.html", Customer: "repair-history.html"};
+  const form = field("loginForm");
+  switch (user.role) {
+    case "Admin": form.action = "user-management.html"; break;
+    case "Manager": form.action = "repair-assignment.html"; break;
+    case "Technician": form.action = "assigned-repairs.html"; break;
+    case "Customer": form.action = "repair-history.html"; break;
+    default: return false;
+  }
   logAction(user, "Signed in");
-  location.assign(pages[user.role]);
-  return false;
+  return true;
 }

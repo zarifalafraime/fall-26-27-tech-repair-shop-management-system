@@ -2,7 +2,7 @@ function validateRegister() {
   const name = field("name").value.trim();
   const email = field("email").value.trim();
   const password = field("password").value;
-  if (!name || !email || !field("email").validity.valid) {
+  if (!name || !email || email.indexOf("@") < 1 || email.indexOf(".", email.indexOf("@") + 2) < 0 || email[email.length - 1] === ".") {
     showMessage("Enter your name and a valid email.");
   } else if (findUser(email)) {
     showMessage("That email is already registered.");
