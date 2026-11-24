@@ -1,0 +1,15 @@
+.header .logo { text-decoration: none; }
+.hero, .cta-band { padding: 32px 20px; text-align: center; background-color: #deebf4; }
+.hero h1 { margin-bottom: 8px; }
+.hero label { display: block; margin: 16px 0 4px; }
+.hero input { max-width: 420px; }
+.hero a { display: block; margin-top: 8px; }
+.home-section { margin: 28px 0; }
+.container h2 { margin-bottom: 12px; }
+.role-grid, .steps, .visit { display: flex; flex-wrap: wrap; gap: 16px; }
+.role-grid article, .steps li, .visit section { flex: 1 1 180px; padding: 16px; background-color: white; border-radius: 8px; }
+.role-grid article { border-top: 3px solid #0A6EBD; }
+.steps { list-style-position: inside; }
+.steps h3 { display: inline; }
+.role-grid p, .steps p, .cta-band p { margin: 6px 0 10px; }
+footer { text-align: center; padding: 14px; background-color: #0D1B2A; color: white; }
