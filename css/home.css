@@ -1,9 +1,5 @@
 .header .logo { text-decoration: none; }
-.hero, .cta-band { padding: 32px 20px; text-align: center; background-color: #deebf4; }
-.hero h1 { margin-bottom: 8px; }
-.hero label { display: block; margin: 16px 0 4px; }
-.hero input { max-width: 420px; }
-.hero a { display: block; margin-top: 8px; }
+.cta-band { padding: 32px 20px; text-align: center; background-color: #deebf4; }
 .home-section { margin: 28px 0; }
 .container h2 { margin-bottom: 12px; }
 .role-grid, .steps, .visit { display: flex; flex-wrap: wrap; gap: 16px; }
